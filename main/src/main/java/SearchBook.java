@@ -1,10 +1,12 @@
+package main.src.main.java;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class SearchBook
 {
-    private final static List<String> books = Arrays.asList("les miserables 1", "les miserables 2", "toto");
+    private final static List<String> books = Arrays.asList("les miserables 1", "les miserables 2", "toto", "REF001");
 
     public static List<String> execute(String title)
     {

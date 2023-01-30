@@ -1,12 +1,10 @@
 package main.src.test.java;
 
 import main.src.main.java.SearchBook;
-import org.junit.Assert;
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SearchBookTest
 {

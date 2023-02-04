@@ -1,4 +1,4 @@
-package main.src.main.java;
+package com.tdd;
 
 public interface LoanRepository {
     void saveLoan(Loan loan);

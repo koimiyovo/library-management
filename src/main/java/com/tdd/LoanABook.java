@@ -1,4 +1,4 @@
-package main.src.main.java;
+package com.tdd;
 
 import java.util.Date;
 import java.util.function.Supplier;

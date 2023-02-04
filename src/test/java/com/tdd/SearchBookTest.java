@@ -1,6 +1,5 @@
-package main.src.test.java;
+package com.tdd;
 
-import main.src.main.java.SearchBook;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 

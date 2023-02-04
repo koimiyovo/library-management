@@ -3,38 +3,51 @@ package com.tdd;
 
 import org.junit.jupiter.api.Test;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class LoanBookTest {
-    @Test
-    public void loanABook() {
-        InMemoryLoanRepository loanRepository = new InMemoryLoanRepository();
-        Loan expectedLoan = new Loan("loaner@gmail.com", "REF001", new Date(2023, 1, 25));
-        LoanABook loanABook = new LoanABook(() -> new Date(2023, 1, 25), loanRepository);
-        loanABook.execute("REF001", "loaner@gmail.com");
+	@Test
+	public void loanABook() {
+		InMemoryLoanRepository loanRepository = new InMemoryLoanRepository();
+		Loan expectedLoan = new Loan("loaner@gmail.com", "REF001", currentDate());
 
-        Loan actualLoan = loanRepository.lastLoan();
+		LoanABook loanABook = new LoanABook(this::currentDate, loanRepository);
+		loanABook.execute("REF001", "loaner@gmail.com");
 
-        assertEquals(expectedLoan.bookReference, actualLoan.bookReference);
-        assertEquals(expectedLoan.loaner, actualLoan.loaner);
-        assertEquals(expectedLoan.loanDate, actualLoan.loanDate);
-    }
+		Loan actualLoan = loanRepository.lastLoan();
 
-    @Test
-    public void loanAnotherBook() {
-        InMemoryLoanRepository loanRepository = new InMemoryLoanRepository();
-        Loan expectedLoan = new Loan("loaner@gmail.com", "REF002", new Date(2023, 1, 25));
-        LoanABook loanABook = new LoanABook(() -> new Date(2023, 1, 25), loanRepository);
-        loanABook.execute("REF002", "loaner@gmail.com");
+		assertEquals(expectedLoan.bookReference, actualLoan.bookReference);
+		assertEquals(expectedLoan.loaner, actualLoan.loaner);
+		assertEquals(expectedLoan.loanDate.compareTo(actualLoan.loanDate), 0);
+	}
 
-        Loan actualLoan = loanRepository.lastLoan();
+	@Test
+	public void loanAnotherBook() {
+		InMemoryLoanRepository loanRepository = new InMemoryLoanRepository();
+		Loan expectedLoan = new Loan("loaner@gmail.com", "REF002", currentDate());
+		LoanABook loanABook = new LoanABook(this::currentDate, loanRepository);
+		loanABook.execute("REF002", "loaner@gmail.com");
 
-        assertEquals(expectedLoan.bookReference, actualLoan.bookReference);
-        assertEquals(expectedLoan.loaner, actualLoan.loaner);
-        assertEquals(expectedLoan.loanDate, actualLoan.loanDate);
-    }
+		Loan actualLoan = loanRepository.lastLoan();
+
+		assertEquals(expectedLoan.bookReference, actualLoan.bookReference);
+		assertEquals(expectedLoan.loaner, actualLoan.loaner);
+		assertEquals(expectedLoan.loanDate.compareTo(actualLoan.loanDate), 0);
+	}
+
+	private Date currentDate() {
+		DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		try {
+			return sdf.parse("25/02/1994 00:00");
+		} catch (ParseException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 }

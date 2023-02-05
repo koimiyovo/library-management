@@ -1,6 +1,7 @@
 package com.tdd;
 
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.text.DateFormat;
@@ -13,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoanBookTest {
 	@Test
+    @DisplayName("Loan a book")
 	public void loanABook() {
 		InMemoryLoanRepository loanRepository = new InMemoryLoanRepository();
 		Loan expectedLoan = new Loan("loaner@gmail.com", "REF001", currentDate());

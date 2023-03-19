@@ -22,7 +22,9 @@ public class InMemoryLoanRepository implements LoanRepository {
 	}
 
 	@Override
-	public boolean isBookAvailable(String bookReference) {
-		return this.loans.stream().noneMatch(loan -> loan.bookReference.equals(bookReference));
+	public boolean areBookAvailable(List<String> bookReferences) {
+		return bookReferences
+				.stream()
+				.allMatch(reference -> this.loans.stream().noneMatch(loan -> loan.bookReferences.contains(reference)));
 	}
 }

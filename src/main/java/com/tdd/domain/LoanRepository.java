@@ -1,4 +1,6 @@
-package com.tdd;
+package com.tdd.domain;
+
+import com.tdd.domain.Loan;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.tdd;
+package com.tdd.domain;
 
 import java.time.Duration;
 import java.util.Date;

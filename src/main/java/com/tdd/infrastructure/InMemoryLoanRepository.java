@@ -1,4 +1,7 @@
-package com.tdd;
+package com.tdd.infrastructure;
+
+import com.tdd.domain.Loan;
+import com.tdd.domain.LoanRepository;
 
 import java.util.ArrayList;
 import java.util.List;

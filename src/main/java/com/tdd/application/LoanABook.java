@@ -1,4 +1,7 @@
-package com.tdd;
+package com.tdd.application;
+
+import com.tdd.domain.LoanRepository;
+import com.tdd.domain.Loan;
 
 import java.time.Duration;
 import java.util.Date;

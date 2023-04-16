@@ -1,6 +1,9 @@
 package com.tdd;
 
 
+import com.tdd.application.LoanABook;
+import com.tdd.infrastructure.InMemoryLoanRepository;
+import com.tdd.domain.Loan;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

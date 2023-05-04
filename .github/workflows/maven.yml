@@ -45,7 +45,9 @@ jobs:
           cache: maven
 
       - name: Set up database
-        run: psql -h 127.0.0.1 -U postgres -c 'CREATE DATABASE "library_management";'
+        run: |
+          psql -h 127.0.0.1 -U postgres -c 'CREATE DATABASE "library_management";'
+          mvn flyway:migrate
         env:
           PGPASSWORD: admin
 
